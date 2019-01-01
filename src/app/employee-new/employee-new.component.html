@@ -1,0 +1,13 @@
+<label>[value]: Nome</label>
+
+<!-- Colchete: Fluxo de dados -> A programação altera o template -->
+<input type="text" [value]="name">
+<hr>
+<label>[(ngModel)]: Nome</label>
+<!--  Colchete e Parentesis: fluxo de dados two way data biding: Template <-> Componente -->
+<input type="text" [(ngModel)]="name">
+
+<!-- Parentesis: Fluxo de dados -> Template para Componente  -->
+<button type="text" (click)="addEmployee()">Adicionar empregado</button>
+
+{{name}}
