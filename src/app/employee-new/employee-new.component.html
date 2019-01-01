@@ -1,13 +1,33 @@
-<label>[value]: Nome</label>
-
 <!-- Colchete: Fluxo de dados -> A programação altera o template -->
-<input type="text" [value]="name">
-<hr>
-<label>[(ngModel)]: Nome</label>
+<!-- 
+  <label>[value]: Nome</label>
+  <input type="text" [value]="name">
+  <hr>
+ -->
+<label>Name</label>
 <!--  Colchete e Parentesis: fluxo de dados two way data biding: Template <-> Componente -->
-<input type="text" [(ngModel)]="name">
-
+<input type="text" [(ngModel)]="employee.name">
+<br>
+<label>Salary</label>
+<br>  
+<input type="text" [(ngModel)]="employee.salary">
+<br>
+<!-- If destroi o elemento
+<div *ngIf="salary < 1000">
+<label>Bonus</label>
+<br>  
+<input type="text" [(ngModel)]="bonus">
+<br>
+</div>
+ -->
+ <!-- Hidden apenas oculta o elemento -->
+<div [hidden]="employee.salary >= 1000">
+<label>Bonus</label>
+<br>  
+<input type="text" [(ngModel)]="employee.bonus">
+<br>
+</div>
 <!-- Parentesis: Fluxo de dados -> Template para Componente  -->
 <button type="text" (click)="addEmployee()">Adicionar empregado</button>
 
-{{name}}
+{{employee.name}}

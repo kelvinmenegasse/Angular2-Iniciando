@@ -1,4 +1,19 @@
 <h1> Lista de Empregados </h1>
-<p>
-  employee-list works!
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employeeService.employees; let i=index;" [id]="'tr'+i">
+      <td>{{employee.name}}</td>
+      <!--
+      <td [style.color]="getSalaryColor(employee)">{{employee.salary}}</td>
+      -->
+      <td [ngClass]="{'salary-expensive': employee.salary > 2000, 'salary-cheap': employee.salary < 2000}">{{employee.salary}}</td>
+      <td>{{employee.bonus}}</td>
+    </tr>
+  </tbody>
+</table>
