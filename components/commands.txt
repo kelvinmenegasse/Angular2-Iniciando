@@ -1,0 +1,26 @@
+npm install -g @angular/cli
+
+ng new <nome do projeto> // cria um novo projeto
+
+ng serve // starta o servidor
+
+link util https://angular.io/guide/quickstart
+
+// a ideia do angular é criar componentes para facilitar o desenvolvimento, reuso e manutencao de codigo
+// se você tem uma tarefa específica, crie um componente para ela
+// o angular utiliza como name convention o padrao kebab-case, ou seja, letras minusculas e hifen para separar
+// o angular possui o AppComponent, que é o componente principal(componente pai), renderizado no inicio e carrega os demais
+
+ng g <nome do componente> // para gerar um componente (dentro da pasta src/app/nomedocomponente)
+
+// os componentes possuem alguns arquivos por padrao
+// .ts -> arquivo typescript, onde está a lógica do componente programada
+// .html -> template do componente, com tags personalizadas utilizando o <componente></componente>
+// .css -> estilo do componente
+
+
+ng g directive <nome da diretiva> // para gerar uma diretiva (Dentro da pasta src/app/nomedadiretiva)
+g = generator
+
+// as diretivas devem ser declaradas no módulo principal (app.module.ts)
+// criamos no padrao kebab-case, mas o resultao é no padrao camelCase
