@@ -1,12 +1,21 @@
 <div class="container">
+  <alert-success [hidden]="!showMessageSuccess">
+    O empregado <strong>{{employee?.name}}</strong> foi cadastrado com sucesso!
+  </alert-success>
   <div class="row">
     <h1> Lista de Empregados </h1>
     <table class="table table-striped">
       <thead>
         <tr>
+          <td>
+            <button class="btn btn-primary" (click)="openNewModal()">Novo Empregado</button>
+          </td>
+        </tr>
+        <tr>
           <th>Name</th>
           <th>Salary</th>
           <th>Bonus</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -14,10 +23,16 @@
           <td>{{employee.name}}</td>
           <td [innerHtml]="employee.salary" salaryColor="{{employee.salary}}"></td>
           <td>{{employee.bonus}}</td>
+          <td>
+            <a href="javascript:void(0)" (click)="openEditModal(employee)" class="btn btn-primary">Edit</a>
+            <a href="javascript:void(0)" (click)="openDestroyModal(employee)" class="btn btn-danger">Delete</a>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<employee-new-modal></employee-new-modal>
+<employee-new-modal (onSubmit)= "onNewEmployee($event)"></employee-new-modal>
+<employee-edit-modal [employee]="employeeToEdit" (onSubmit)= "onEditEmployee($event)"></employee-edit-modal>
+<employee-delete-modal [employee]="employeeToDelete" (onDestroy)= "onDestroyEmployee($event)"></employee-delete-modal>

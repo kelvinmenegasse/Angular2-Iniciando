@@ -1,28 +1,25 @@
-import { Component, OnInit, ElementRef, Output, EventEmitter} from '@angular/core';
-import { Employee, EmployeeService } from '../employee.service';
+import { Component, OnInit, ElementRef, Output, EventEmitter, Input} from '@angular/core';
+import { Employee} from '../employee.service';
 
 /* O typescript não entende o $ do jquery, entao precisamos declará-lo */
 declare const $;
 
 @Component({
-  selector: 'employee-new-modal',
-  templateUrl: './employee-new-modal.component.html',
-  styleUrls: ['./employee-new-modal.component.css']
+  selector: 'employee-edit-modal',
+  templateUrl: './employee-edit-modal.component.html',
+  styleUrls: ['./employee-edit-modal.component.css']
 })
 
-export class EmployeeNewModalComponent implements OnInit {
+export class EmployeeEditModalComponent implements OnInit {
 
-  employee: Employee = {
-    name: '',
-    salary: 0,
-    bonus: 0,
-  };
+  @Input()
+  employee: Employee;
 
   /* Output é utilizado para que outro componente registre como ação este evento */
   @Output()
   onSubmit: EventEmitter<Employee> = new EventEmitter<Employee>();
 
-  constructor(private element: ElementRef, private employeeService: EmployeeService) { }
+  constructor(private element: ElementRef) { }
 
   ngOnInit() {
   }
@@ -51,7 +48,6 @@ export class EmployeeNewModalComponent implements OnInit {
 
   addEmployee(event) {
     const copy = Object.assign({}, this.employee);
-    this.employeeService.addEmployee(copy);
     this.onSubmit.emit(copy);
     this.hide();
   }
